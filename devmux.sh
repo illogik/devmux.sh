@@ -10,7 +10,7 @@ tmux -2 new-session -d -s devmux
 # create first window
 
 tmux new-window -t devmux:1 -n 'vagrant'
-tmux send-keys 'cd vagrant/centos' C-m
+tmux send-keys 'cd vagrant/linuxacademy' C-m
 
 tmux splitw -v -p 50 -t devmux:1
 tmux send-keys 'cd vagrant/tunnel' C-m
