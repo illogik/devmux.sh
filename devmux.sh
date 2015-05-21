@@ -5,29 +5,32 @@
 # Created on: 05/20/15
 # Description: Tmux startup script
 
-tmux -2 new-session -d -s devenv
+tmux -2 new-session -d -s devmux
 
 # create first window
 
-tmux new-window -t devenv:1 -n 'vagrant'
+tmux new-window -t devmux:1 -n 'vagrant'
+tmux send-keys 'cd vagrant/centos' C-m
 
-tmux splitw -v -p 50 -t devenv:1
-tmux splitw -v -p 50 -t devenv:1
+tmux splitw -v -p 50 -t devmux:1
+tmux send-keys 'cd vagrant/tunnel' C-m
 
+tmux splitw -v -p 50 -t devmux:1
 
 # create second window
 
-tmux new-window -t devenv:2 -n 'unigy'
-tmux splitw -v -p 50 -t devenv:2
+tmux new-window -t devmux:2 -n 'unigy'
+tmux splitw -v -p 50 -t devmux:2
 
 # create third window
 
-tmux new-window -t devenv:3 -n 'linuxacademy'
+tmux new-window -t devmux:3 -n 'linuxacademy'
+tmux send-keys 'ssh user@'
 
 # set to default window
 
-tmux select-window -t devenv:1
+tmux select-window -t devmux:1
 
 # attach to session
 
-tmux -2 attach-session -t devenv
+tmux -2 attach-session -t devmux
